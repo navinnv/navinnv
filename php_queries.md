@@ -12,3 +12,14 @@
   
 <!-- Select Query -->
   $query = "SELECT * FROM `tableName`";
+
+<!-- Executing Query -->
+    $conn->query($query);
+    
+<!-- Select Query Example -->
+    $res = $conn->query($selectQuery);
+    if($res->num_rows > 0){
+      while($row = $res->fetch_assoc()){
+        echo json_encode($row);
+      }
+    }
