@@ -1,0 +1,53 @@
+.swiper-container .swiper-wrapper {
+    align-items: center;
+}
+
+.lan-pic {
+    filter: grayscale(100%);
+}
+
+.lan-pic img {
+    max-width: 100%;
+}
+
+.lan-pic:hover {
+    filter: grayscale(0%);
+    transition: 1s;
+}
+
+.companies .swiper-wrapper {
+    gap: 18px;
+}
+
+.companies .swiper-slide {
+    width: fit-content;
+}
+
+.gallery-grid__image {
+    transition: all .4s;
+}
+
+.gallery-grid__item.inactive a{
+    pointer-events: none;
+}
+
+.gallery-grid__item a:hover{
+    text-decoration: none;
+}
+
+.gallery-grid__item:not(.inactive) .title::after{
+    content: "\f08e";
+    font-family: "Font Awesome 6 Pro";
+    font-weight: 900;
+    font-size: 10px;
+    display: inline-block;
+    vertical-align: super;
+    padding-left: 4px;
+    color: var(--blue);
+}
+
+.timeline__item a{
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: top;
+}

@@ -4,7 +4,7 @@
  * Version: 1.0.3
  */
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     'use strict';
 
@@ -30,14 +30,14 @@ $(document).ready(function() {
         targets: 'body',
         opacity: 1,
         delay: 0,
-        complete: function(anim) {
+        complete: function (anim) {
             progressBar(); //Init progress bar
         }
     });
 
     $('body, .js-img-load').imagesLoaded({
         background: !0
-    }).always(function(instance) {
+    }).always(function (instance) {
         preloader(); //Init preloader
     });
 
@@ -69,7 +69,7 @@ $(document).ready(function() {
       Hamburger
     -------------------------------------------------------------------*/
 
-    $('.hamburger').on('click', function() {
+    $('.hamburger').on('click', function () {
         $(this).toggleClass('is-active');
         $('.inner-menu').toggleClass('is-active');
         $('body').toggleClass('open-menu');
@@ -83,8 +83,8 @@ $(document).ready(function() {
     // Testimonials
     $('body').imagesLoaded({
         background: !0
-    }).always(function(instance) {
-        $('.js-carousel-review').each(function() {
+    }).always(function (instance) {
+        $('.js-carousel-review').each(function () {
             var carousel = new Swiper('.js-carousel-review', {
                 slidesPerView: 1,
                 spaceBetween: 30,
@@ -102,7 +102,7 @@ $(document).ready(function() {
         });
 
         // Clients
-        $('.js-carousel-clients').each(function() {
+        $('.js-carousel-clients').each(function () {
             var carousel = new Swiper('.js-carousel-clients', {
                 slidesPerView: 4,
                 spaceBetween: 30,
@@ -143,10 +143,10 @@ $(document).ready(function() {
 
         // bootstrap col position
         $('.sticky-column')
-            .on('sticky_kit:bottom', function(e) {
+            .on('sticky_kit:bottom', function (e) {
                 $(this).parent().css('position', 'static');
             })
-            .on('sticky_kit:unbottom', function(e) {
+            .on('sticky_kit:unbottom', function (e) {
                 $(this).parent().css('position', 'relative');
             });
     };
@@ -179,10 +179,10 @@ $(document).ready(function() {
 
     function debounce(func, wait, immediate) {
         var timeout;
-        return function() {
+        return function () {
             var context = this,
                 args = arguments;
-            var later = function() {
+            var later = function () {
                 timeout = null;
                 if (!immediate) func.apply(context, args);
             };
@@ -193,7 +193,7 @@ $(document).ready(function() {
         };
     };
 
-    $(window).resize(debounce(function() {
+    $(window).resize(debounce(function () {
         windowSize();
         $(document.body).trigger("sticky_kit:recalc");
         if (windowWidth < screen) {
@@ -209,17 +209,17 @@ $(document).ready(function() {
     -------------------------------------------------------------------*/
 
     function progressBar() {
-        $('.progress').each(function() {
+        $('.progress').each(function () {
             var ctrl = new ScrollMagic.Controller();
             new ScrollMagic.Scene({
-                    triggerElement: '.progress',
-                    triggerHook: 'onEnter',
-                    duration: 300
-                })
+                triggerElement: '.progress',
+                triggerHook: 'onEnter',
+                duration: 300
+            })
                 .addTo(ctrl)
-                .on("enter", function(e) {
+                .on("enter", function (e) {
                     var progressBar = $('.progress-bar');
-                    progressBar.each(function(indx) {
+                    progressBar.each(function (indx) {
                         $(this).css({
                             'width': $(this).attr('aria-valuenow') + '%',
                             'z-index': '2'
@@ -241,7 +241,7 @@ $(document).ready(function() {
         $backToTop.hide();
 
 
-        $(window).scroll(function() {
+        $(window).scroll(function () {
             var windowScrollTop = $(window).scrollTop();
             if (windowScrollTop > $showBackTotop) {
                 $backToTop.fadeIn('slow');
@@ -250,7 +250,7 @@ $(document).ready(function() {
             }
         });
 
-        $backToTop.on('click', function(e) {
+        $backToTop.on('click', function (e) {
             e.preventDefault();
             $(' body, html ').animate({
                 scrollTop: 0
@@ -265,7 +265,7 @@ $(document).ready(function() {
       Style background image
     -------------------------------------------------------------------*/
 
-    $('.js-image').each(function() {
+    $('.js-image').each(function () {
         var dataImage = $(this).attr('data-image');
         $(this).css('background-image', 'url(' + dataImage + ')');
     });
@@ -275,7 +275,7 @@ $(document).ready(function() {
       Autoresize textarea
     -------------------------------------------------------------------*/
 
-    $('textarea').each(function() {
+    $('textarea').each(function () {
         autosize(this);
     });
 
@@ -290,7 +290,7 @@ $(document).ready(function() {
       Tooltip
     -------------------------------------------------------------------*/
 
-    $(function() {
+    $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
 
@@ -299,7 +299,7 @@ $(document).ready(function() {
       Switch categories & Filter mobile
     -------------------------------------------------------------------*/
 
-    $('.select').on('click', '.placeholder', function() {
+    $('.select').on('click', '.placeholder', function () {
         var parent = $(this).closest('.select');
         if (!parent.hasClass('is-open')) {
             parent.addClass('is-open');
@@ -307,7 +307,7 @@ $(document).ready(function() {
         } else {
             parent.removeClass('is-open');
         }
-    }).on('click', 'ul>li', function() {
+    }).on('click', 'ul>li', function () {
         var parent = $(this).closest('.select');
         parent.removeClass('is-open').find('.placeholder').text($(this).text());
         parent.find('input[type=hidden]').attr('value', $(this).attr('data-value'));
@@ -324,30 +324,30 @@ $(document).ready(function() {
 
 
     /*-----------------------------------------------------------------
-	  Anchor scroll
+      Anchor scroll
     -------------------------------------------------------------------*/
 
-    $('a[href^="!#"]').on('click', function(e) {
+    $('a[href^="!#"]').on('click', function (e) {
         e.preventDefault();
         var target = this.hash;
         var $target = $(target);
 
         $('html, body').stop().animate({
             'scrollTop': $target.offset().top
-        }, 900, 'swing', function() {
+        }, 900, 'swing', function () {
             window.location.hash = target;
         });
     });
 
 
     /*-----------------------------------------------------------------
-	  Tabs
+      Tabs
     -------------------------------------------------------------------*/
 
-    $('.js-tabs').each(function() {
+    $('.js-tabs').each(function () {
         $('.content .tabcontent').hide();
         $('.content .tabcontent:first').show();
-        $('.nav .nav__item a').on('click', function() {
+        $('.nav .nav__item a').on('click', function (e) {
             $('.nav .nav__item a').removeClass('active');
             $(this).addClass('active');
             var currentTab = $(this).attr('href');
@@ -365,7 +365,7 @@ $(document).ready(function() {
     // Mobile close menu
     windowWidth = $(window).width();
     if ((windowWidth < screen)) {
-        $('.nav .nav__item a').on('click', function() {
+        $('.nav .nav__item a').on('click', function () {
             $('.hamburger').removeClass('is-active');
             $('.inner-menu').removeClass('is-active');
             $('body').removeClass('open-menu');
@@ -399,7 +399,7 @@ $(document).ready(function() {
         }
     });
 
-    $portfolioMasonry.imagesLoaded().progress(function() {
+    $portfolioMasonry.imagesLoaded().progress(function () {
         $portfolioMasonry.isotope({
             columnWidth: '.gallery-grid__item',
             gutter: '.gutter-sizer',
@@ -412,10 +412,10 @@ $(document).ready(function() {
       hover effect button
     -------------------------------------------------------------------*/
 
-    $(function() {
+    $(function () {
         $('.btn').append('<span></span>');
 
-        $('.btn').on('mouseenter', function(e) {
+        $('.btn').on('mouseenter', function (e) {
             var parentOffset = $(this).offset(),
                 relX = e.pageX - parentOffset.left,
                 relY = e.pageY - parentOffset.top;
@@ -423,7 +423,7 @@ $(document).ready(function() {
                 top: relY,
                 left: relX
             })
-        }).on('mouseout', function(e) {
+        }).on('mouseout', function (e) {
             var parentOffset = $(this).offset(),
                 relX = e.pageX - parentOffset.left,
                 relY = e.pageY - parentOffset.top;
@@ -439,8 +439,8 @@ $(document).ready(function() {
       emoji add in textarea
     -------------------------------------------------------------------*/
 
-    $(function() {
-        $('.emoji-wrap img').on('click', function() {
+    $(function () {
+        $('.emoji-wrap img').on('click', function () {
             var emoji = $(this).attr('title');
             $('#commentForm').val($('#commentForm').val() + " " + emoji + " ");
         });
@@ -448,7 +448,7 @@ $(document).ready(function() {
 
 
     /*-----------------------------------------------------------------
-	  mediumZoom
+      mediumZoom
     -------------------------------------------------------------------*/
 
     mediumZoom('[data-zoom]', {
@@ -475,7 +475,7 @@ $(document).ready(function() {
       Contacts form
     -------------------------------------------------------------------*/
 
-    $("#contact-form").validator().on("submit", function(event) {
+    $("#contact-form").validator().on("submit", function (event) {
         if (event.isDefaultPrevented()) {
             formError();
             submitMSG(false, "Please fill in the form...");
@@ -496,7 +496,7 @@ $(document).ready(function() {
             type: "POST",
             url: url,
             data: "name=" + name + "&email=" + email + "&message=" + message,
-            success: function(text) {
+            success: function (text) {
                 if (text == "success") {
                     formSuccess();
                 } else {
@@ -513,7 +513,7 @@ $(document).ready(function() {
     }
 
     function formError() {
-        $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+        $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
             $(this).removeClass();
         });
     }

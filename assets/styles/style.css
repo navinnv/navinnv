@@ -2993,15 +2993,4 @@ button:focus {
     overflow: auto;
 }
 
-.lan-pic
-{
-  filter: grayscale(100%);
-}
-
-.lan-pic:hover
-{
-  filter: grayscale(0%);
-  transition: 1s;
-}
-
 /*# sourceMappingURL=style.css.map */
